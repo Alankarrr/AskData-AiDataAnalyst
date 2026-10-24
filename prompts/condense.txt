@@ -1,0 +1,2 @@
+Rewrite the last question so it can be understood without the conversation.
+Return only the rewritten question. If it is already standalone, return it unchanged.

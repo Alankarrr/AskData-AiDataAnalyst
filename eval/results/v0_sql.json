@@ -1,0 +1,235 @@
+{
+  "mode": "sql",
+  "tag": "v0",
+  "n": 32,
+  "execution_accuracy": 0.938,
+  "valid_sql_rate": 1.0,
+  "avg_retries": 0.0,
+  "details": [
+    {
+      "id": "q001",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(*) AS total_orders FROM olist_orders_dataset LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q002",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(*) AS delivered_orders FROM olist_orders_dataset WHERE order_status = 'delivered' LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q003",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(DISTINCT customer_unique_id) AS unique_customers FROM olist_customers_dataset LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q004",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(DISTINCT seller_id) AS seller_count FROM olist_sellers_dataset LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q005",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT AVG(review_score) AS average_review_score FROM olist_order_reviews_dataset LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q006",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT payment_type, COUNT(*) AS usage_count FROM olist_order_payments_dataset GROUP BY payment_type ORDER BY usage_count DESC LIMIT 1",
+      "error": null
+    },
+    {
+      "id": "q007",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT order_status, COUNT(*) AS order_count FROM olist_orders_dataset GROUP BY order_status ORDER BY order_status LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q008",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT MAX(price) AS highest_item_price FROM olist_order_items_dataset LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q009",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT AVG(oi.price) AS avg_item_price, AVG(oi.freight_value) AS avg_freight_value FROM olist_order_items_dataset AS oi LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q010",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(*) AS reviews_score_1 FROM olist_order_reviews_dataset WHERE review_score = 1 LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q011",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT ROUND(100.0 * SUM(CASE WHEN order_status = 'delivered' THEN 1 ELSE 0 END) / COUNT(*), 2) AS delivered_percentage FROM olist_orders_dataset LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q012",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(*) AS canceled_orders FROM olist_orders_dataset WHERE order_status = 'canceled' AND STRFTIME('%Y', order_purchase_timestamp) = '2017' LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q013",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT review_score, COUNT(*) AS review_count FROM olist_order_reviews_dataset GROUP BY review_score ORDER BY review_score LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q014",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT ROUND(SUM(oi.price), 2) AS total_revenue FROM olist_order_items_dataset AS oi JOIN olist_orders_dataset AS o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q015",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT ROUND(SUM(oi.price) / COUNT(DISTINCT o.order_id), 2) AS average_order_value FROM olist_order_items_dataset AS oi JOIN olist_orders_dataset AS o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q016",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT pct.product_category_name_english AS category, ROUND(SUM(oi.price), 2) AS revenue FROM olist_orders_dataset AS o JOIN olist_order_items_dataset AS oi ON o.order_id = oi.order_id JOIN olist_products_dataset AS p ON oi.product_id = p.product_id JOIN product_category_name_translation AS pct ON p.product_category_name = pct.product_category_name WHERE o.order_status = 'delivered' AND STRFTIME('%Y', o.order_purchase_timestamp) = '2017' GROUP BY pct.product_category_name_english ORDER BY revenue DESC LIMIT 5",
+      "error": null
+    },
+    {
+      "id": "q017",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT c.customer_state AS state, COUNT(*) AS order_count FROM olist_orders_dataset AS o JOIN olist_customers_dataset AS c ON o.customer_id = c.customer_id GROUP BY c.customer_state ORDER BY order_count DESC LIMIT 3",
+      "error": null
+    },
+    {
+      "id": "q018",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT STRFTIME('%Y-%m', o.order_purchase_timestamp) AS month, COUNT(*) AS delivered_orders FROM olist_orders_dataset AS o WHERE o.order_status = 'delivered' AND STRFTIME('%Y', o.order_purchase_timestamp) = '2017' GROUP BY month ORDER BY month LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q019",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT STRFTIME('%Y', o.order_purchase_timestamp) AS year, ROUND(SUM(oi.price), 2) AS delivered_order_revenue FROM olist_orders_dataset AS o JOIN olist_order_items_dataset AS oi ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' GROUP BY year ORDER BY year LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q020",
+      "correct": false,
+      "retries": 0,
+      "pred_sql": "SELECT pc.product_category_name_english AS category, COUNT(*) AS items_sold FROM olist_order_items_dataset AS oi JOIN olist_orders_dataset AS o ON o.order_id = oi.order_id JOIN olist_products_dataset AS p ON p.product_id = oi.product_id JOIN product_category_name_translation AS pc ON pc.product_category_name = p.product_category_name WHERE o.order_status = 'delivered' GROUP BY pc.product_category_name_english ORDER BY items_sold DESC LIMIT 10",
+      "error": null
+    },
+    {
+      "id": "q021",
+      "correct": false,
+      "retries": 0,
+      "pred_sql": "SELECT c.customer_state, ROUND(AVG(oi.freight_value), 2) AS avg_freight FROM olist_orders_dataset AS o JOIN olist_customers_dataset AS c ON o.customer_id = c.customer_id JOIN olist_order_items_dataset AS oi ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' GROUP BY c.customer_state ORDER BY avg_freight DESC LIMIT 5",
+      "error": null
+    },
+    {
+      "id": "q022",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT oi.seller_id, ROUND(SUM(oi.price), 2) AS revenue FROM olist_order_items_dataset AS oi JOIN olist_orders_dataset AS o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' GROUP BY oi.seller_id ORDER BY revenue DESC LIMIT 5",
+      "error": null
+    },
+    {
+      "id": "q023",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT AVG(JULIANDAY(order_delivered_customer_date) - JULIANDAY(order_purchase_timestamp)) AS avg_delivery_time_days FROM olist_orders_dataset WHERE order_status = 'delivered' LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q024",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT AVG(payment_installments) AS avg_installments FROM olist_order_payments_dataset WHERE payment_type = 'credit_card' LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q025",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT payment_type, ROUND(SUM(payment_value), 2) AS total_payment_value FROM olist_order_payments_dataset GROUP BY payment_type ORDER BY total_payment_value DESC LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q026",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT s.seller_state, COUNT(*) AS seller_count FROM olist_sellers_dataset AS s GROUP BY s.seller_state ORDER BY seller_count DESC LIMIT 1",
+      "error": null
+    },
+    {
+      "id": "q027",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT STRFTIME('%Y-%m', o.order_purchase_timestamp) AS month, ROUND(SUM(oi.price), 2) AS revenue FROM olist_orders_dataset AS o JOIN olist_order_items_dataset AS oi ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' AND STRFTIME('%Y', o.order_purchase_timestamp) = '2018' GROUP BY month ORDER BY month LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q028",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(*) AS late_delivered_orders FROM olist_orders_dataset AS o WHERE o.order_status = 'delivered' AND JULIANDAY(o.order_delivered_customer_date) - JULIANDAY(o.order_estimated_delivery_date) > 0 LIMIT 100",
+      "error": null
+    },
+    {
+      "id": "q029",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT ROUND(100.0 * SUM(CASE WHEN JULIANDAY(order_delivered_customer_date) - JULIANDAY(order_estimated_delivery_date) > 0 THEN 1 ELSE 0 END) / COUNT(*), 2) AS late_delivery_rate_percent FROM olist_orders_dataset WHERE order_status = 'delivered' LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q030",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT STRFTIME('%Y-%m', o.order_purchase_timestamp) AS purchase_month, COUNT(*) AS late_deliveries FROM olist_orders_dataset AS o WHERE o.order_status = 'delivered' AND JULIANDAY(o.order_delivered_customer_date) - JULIANDAY(o.order_estimated_delivery_date) > 0 GROUP BY purchase_month ORDER BY late_deliveries DESC LIMIT 1",
+      "error": null
+    },
+    {
+      "id": "q031",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT COUNT(*) AS customers_multiple_orders FROM (SELECT c.customer_unique_id FROM olist_orders_dataset AS o JOIN olist_customers_dataset AS c ON o.customer_id = c.customer_id GROUP BY c.customer_unique_id HAVING COUNT(*) > 1) AS sub LIMIT 1000",
+      "error": null
+    },
+    {
+      "id": "q032",
+      "correct": true,
+      "retries": 0,
+      "pred_sql": "SELECT c.customer_state, ROUND(SUM(oi.price), 2) AS revenue FROM olist_orders_dataset AS o JOIN olist_order_items_dataset AS oi ON o.order_id = oi.order_id JOIN olist_customers_dataset AS c ON o.customer_id = c.customer_id WHERE o.order_status = 'delivered' GROUP BY c.customer_state ORDER BY revenue DESC LIMIT 3",
+      "error": null
+    }
+  ],
+  "seconds": 353.7
+}

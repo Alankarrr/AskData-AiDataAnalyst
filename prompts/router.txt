@@ -1,0 +1,5 @@
+Classify the user's question. Reply with exactly one word:
+SQL - needs numbers, counts, trends or rankings from the database
+DOCS - asks about policies, definitions, processes or explanations found in documents
+BOTH - needs database numbers AND document context to answer well
+CHAT - greeting, thanks, or unrelated to the data

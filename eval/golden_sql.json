@@ -1,0 +1,226 @@
+[
+  {
+    "id": "q001",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many orders are there in total?",
+    "gold_sql": "SELECT COUNT(*) FROM olist_orders_dataset"
+  },
+  {
+    "id": "q002",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many orders were delivered?",
+    "gold_sql": "SELECT COUNT(*) FROM olist_orders_dataset WHERE order_status = 'delivered'"
+  },
+  {
+    "id": "q003",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many unique customers are there?",
+    "gold_sql": "SELECT COUNT(DISTINCT customer_unique_id) FROM olist_customers_dataset"
+  },
+  {
+    "id": "q004",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many sellers are there?",
+    "gold_sql": "SELECT COUNT(*) FROM olist_sellers_dataset"
+  },
+  {
+    "id": "q005",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "What is the average review score?",
+    "gold_sql": "SELECT ROUND(AVG(review_score),2) FROM olist_order_reviews_dataset"
+  },
+  {
+    "id": "q006",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "Which payment type is used most often?",
+    "gold_sql": "SELECT payment_type, COUNT(*) AS n FROM olist_order_payments_dataset GROUP BY payment_type ORDER BY n DESC LIMIT 1"
+  },
+  {
+    "id": "q007",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many orders are there for each order status?",
+    "gold_sql": "SELECT order_status, COUNT(*) AS n FROM olist_orders_dataset GROUP BY order_status ORDER BY n DESC"
+  },
+  {
+    "id": "q008",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "What is the highest item price?",
+    "gold_sql": "SELECT MAX(price) FROM olist_order_items_dataset"
+  },
+  {
+    "id": "q009",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "What are the average item price and average freight value?",
+    "gold_sql": "SELECT ROUND(AVG(price),2), ROUND(AVG(freight_value),2) FROM olist_order_items_dataset"
+  },
+  {
+    "id": "q010",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many reviews have a score of 1?",
+    "gold_sql": "SELECT COUNT(*) FROM olist_order_reviews_dataset WHERE review_score = 1"
+  },
+  {
+    "id": "q011",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "What percentage of orders were delivered?",
+    "gold_sql": "SELECT ROUND(100.0 * SUM(CASE WHEN order_status = 'delivered' THEN 1 ELSE 0 END) / COUNT(*), 2) FROM olist_orders_dataset"
+  },
+  {
+    "id": "q012",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "How many orders were canceled in 2017?",
+    "gold_sql": "SELECT COUNT(*) FROM olist_orders_dataset WHERE order_status = 'canceled' AND strftime('%Y', order_purchase_timestamp) = '2017'"
+  },
+  {
+    "id": "q013",
+    "type": "sql",
+    "difficulty": "easy",
+    "question": "What is the review score distribution?",
+    "gold_sql": "SELECT review_score, COUNT(*) AS n FROM olist_order_reviews_dataset GROUP BY review_score ORDER BY review_score"
+  },
+  {
+    "id": "q014",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the total revenue from delivered orders?",
+    "gold_sql": "SELECT ROUND(SUM(oi.price),2) FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered'"
+  },
+  {
+    "id": "q015",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the average order value of delivered orders?",
+    "gold_sql": "SELECT ROUND(SUM(oi.price) * 1.0 / COUNT(DISTINCT oi.order_id),2) FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered'"
+  },
+  {
+    "id": "q016",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "Top 5 product categories by revenue in 2017",
+    "gold_sql": "SELECT t.product_category_name_english, ROUND(SUM(oi.price),2) AS revenue FROM olist_orders_dataset o JOIN olist_order_items_dataset oi ON o.order_id = oi.order_id JOIN olist_products_dataset p ON oi.product_id = p.product_id JOIN product_category_name_translation t ON p.product_category_name = t.product_category_name WHERE o.order_status = 'delivered' AND strftime('%Y', o.order_purchase_timestamp) = '2017' GROUP BY t.product_category_name_english ORDER BY revenue DESC LIMIT 5"
+  },
+  {
+    "id": "q017",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "Which 3 customer states have the most orders?",
+    "gold_sql": "SELECT c.customer_state, COUNT(*) AS orders FROM olist_orders_dataset o JOIN olist_customers_dataset c ON o.customer_id = c.customer_id GROUP BY c.customer_state ORDER BY orders DESC LIMIT 3"
+  },
+  {
+    "id": "q018",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "How many delivered orders were placed in each month of 2017?",
+    "gold_sql": "SELECT strftime('%Y-%m', order_purchase_timestamp) AS month, COUNT(*) AS delivered_orders FROM olist_orders_dataset WHERE order_status = 'delivered' AND strftime('%Y', order_purchase_timestamp) = '2017' GROUP BY month ORDER BY month"
+  },
+  {
+    "id": "q019",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the delivered-order revenue for each year?",
+    "gold_sql": "SELECT strftime('%Y', o.order_purchase_timestamp) AS year, ROUND(SUM(oi.price),2) AS revenue FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' GROUP BY year ORDER BY year"
+  },
+  {
+    "id": "q020",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What are the 10 product categories with the most items sold?",
+    "gold_sql": "SELECT t.product_category_name_english, COUNT(*) AS items FROM olist_order_items_dataset oi JOIN olist_products_dataset p ON oi.product_id = p.product_id JOIN product_category_name_translation t ON p.product_category_name = t.product_category_name GROUP BY t.product_category_name_english ORDER BY items DESC LIMIT 10"
+  },
+  {
+    "id": "q021",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "Which 5 customer states have the highest average freight value?",
+    "gold_sql": "SELECT c.customer_state, ROUND(AVG(oi.freight_value),2) AS avg_freight FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id JOIN olist_customers_dataset c ON c.customer_id = o.customer_id GROUP BY c.customer_state ORDER BY avg_freight DESC LIMIT 5"
+  },
+  {
+    "id": "q022",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "Who are the top 5 sellers by revenue?",
+    "gold_sql": "SELECT oi.seller_id, ROUND(SUM(oi.price),2) AS revenue FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' GROUP BY oi.seller_id ORDER BY revenue DESC LIMIT 5"
+  },
+  {
+    "id": "q023",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the average delivery time in days for delivered orders?",
+    "gold_sql": "SELECT ROUND(AVG(julianday(order_delivered_customer_date) - julianday(order_purchase_timestamp)),2) FROM olist_orders_dataset WHERE order_status = 'delivered' AND order_delivered_customer_date IS NOT NULL"
+  },
+  {
+    "id": "q024",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the average number of installments for credit card payments?",
+    "gold_sql": "SELECT ROUND(AVG(payment_installments),2) FROM olist_order_payments_dataset WHERE payment_type = 'credit_card'"
+  },
+  {
+    "id": "q025",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the total payment value for each payment type?",
+    "gold_sql": "SELECT payment_type, ROUND(SUM(payment_value),2) AS total FROM olist_order_payments_dataset GROUP BY payment_type ORDER BY total DESC"
+  },
+  {
+    "id": "q026",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "Which seller state has the most sellers?",
+    "gold_sql": "SELECT seller_state, COUNT(*) AS n FROM olist_sellers_dataset GROUP BY seller_state ORDER BY n DESC LIMIT 1"
+  },
+  {
+    "id": "q027",
+    "type": "sql",
+    "difficulty": "medium",
+    "question": "What is the monthly delivered-order revenue in 2018?",
+    "gold_sql": "SELECT strftime('%Y-%m', o.order_purchase_timestamp) AS month, ROUND(SUM(oi.price),2) AS revenue FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id WHERE o.order_status = 'delivered' AND strftime('%Y', o.order_purchase_timestamp) = '2018' GROUP BY month ORDER BY month"
+  },
+  {
+    "id": "q028",
+    "type": "sql",
+    "difficulty": "hard",
+    "question": "How many delivered orders arrived later than the estimated delivery date?",
+    "gold_sql": "SELECT COUNT(*) FROM olist_orders_dataset o WHERE o.order_status = 'delivered' AND o.order_delivered_customer_date IS NOT NULL AND julianday(o.order_delivered_customer_date) > julianday(o.order_estimated_delivery_date)"
+  },
+  {
+    "id": "q029",
+    "type": "sql",
+    "difficulty": "hard",
+    "question": "What is the late delivery rate as a percentage of delivered orders?",
+    "gold_sql": "SELECT ROUND(100.0 * SUM(CASE WHEN julianday(o.order_delivered_customer_date) > julianday(o.order_estimated_delivery_date) THEN 1 ELSE 0 END) / COUNT(*), 2) FROM olist_orders_dataset o WHERE o.order_status = 'delivered' AND o.order_delivered_customer_date IS NOT NULL"
+  },
+  {
+    "id": "q030",
+    "type": "sql",
+    "difficulty": "hard",
+    "question": "Which purchase month had the most late deliveries?",
+    "gold_sql": "SELECT strftime('%Y-%m', o.order_purchase_timestamp) AS month, COUNT(*) AS late_orders FROM olist_orders_dataset o WHERE o.order_status = 'delivered' AND o.order_delivered_customer_date IS NOT NULL AND julianday(o.order_delivered_customer_date) > julianday(o.order_estimated_delivery_date) GROUP BY month ORDER BY late_orders DESC LIMIT 1"
+  },
+  {
+    "id": "q031",
+    "type": "sql",
+    "difficulty": "hard",
+    "question": "How many customers placed more than one order?",
+    "gold_sql": "SELECT COUNT(*) FROM (SELECT c.customer_unique_id FROM olist_orders_dataset o JOIN olist_customers_dataset c ON c.customer_id = o.customer_id GROUP BY c.customer_unique_id HAVING COUNT(*) > 1)"
+  },
+  {
+    "id": "q032",
+    "type": "sql",
+    "difficulty": "hard",
+    "question": "Which 3 customer states have the highest delivered-order revenue?",
+    "gold_sql": "SELECT c.customer_state, ROUND(SUM(oi.price),2) AS revenue FROM olist_order_items_dataset oi JOIN olist_orders_dataset o ON o.order_id = oi.order_id JOIN olist_customers_dataset c ON c.customer_id = o.customer_id WHERE o.order_status = 'delivered' GROUP BY c.customer_state ORDER BY revenue DESC LIMIT 3"
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {"question": "Top 5 categories by revenue in 2017", "expected": "SQL"},
+  {"question": "How many orders were placed per month?", "expected": "SQL"},
+  {"question": "What is the refund policy for late deliveries?", "expected": "DOCS"},
+  {"question": "How does the company define an active seller?", "expected": "DOCS"},
+  {"question": "Why did delivery delays rise in November 2017 and what does the ops report say?", "expected": "BOTH"},
+  {"question": "Hello!", "expected": "CHAT"},
+  {"question": "Thanks, that helps", "expected": "CHAT"}
+]

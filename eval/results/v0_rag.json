@@ -1,0 +1,140 @@
+{
+  "mode": "rag",
+  "tag": "v0",
+  "k": 5,
+  "n": 26,
+  "hit_rate@5": 1.0,
+  "details": [
+    {
+      "id": "r001",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r002",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r003",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r004",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r005",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r006",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r007",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r008",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r009",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r010",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r011",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r012",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r013",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r014",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r015",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r016",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r017",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r018",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r019",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r020",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r021",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r022",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r023",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r024",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r025",
+      "hit": true,
+      "contains_answer": true
+    },
+    {
+      "id": "r026",
+      "hit": true,
+      "contains_answer": true
+    }
+  ],
+  "seconds": 18.1
+}

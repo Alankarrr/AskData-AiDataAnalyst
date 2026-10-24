@@ -1,0 +1,158 @@
+[
+  {
+    "id": "r001",
+    "question": "How many days do customers have to request a refund?",
+    "expected_source": "refund_policy.md",
+    "answer_must_contain": "7 days"
+  },
+  {
+    "id": "r002",
+    "question": "What happens when a delivery arrives more than 10 days after the estimated date?",
+    "expected_source": "refund_policy.md",
+    "answer_must_contain": "shipping fee"
+  },
+  {
+    "id": "r003",
+    "question": "After how many days is an order that never arrived refunded in full?",
+    "expected_source": "refund_policy.md",
+    "answer_must_contain": "45 days"
+  },
+  {
+    "id": "r004",
+    "question": "How must damaged or defective items be reported?",
+    "expected_source": "refund_policy.md",
+    "answer_must_contain": "photo"
+  },
+  {
+    "id": "r005",
+    "question": "How long do approved refunds take to reach the customer?",
+    "expected_source": "refund_policy.md",
+    "answer_must_contain": "5 to 10 business days"
+  },
+  {
+    "id": "r006",
+    "question": "Who reviews refund requests made after the 7-day window?",
+    "expected_source": "refund_policy.md",
+    "answer_must_contain": "customer support"
+  },
+  {
+    "id": "r007",
+    "question": "Within how many business days must sellers hand orders to the carrier?",
+    "expected_source": "delivery_sla.md",
+    "answer_must_contain": "3 business days"
+  },
+  {
+    "id": "r008",
+    "question": "What happens to sellers who miss the handover deadline in more than 8% of orders?",
+    "expected_source": "delivery_sla.md",
+    "answer_must_contain": "formal warning"
+  },
+  {
+    "id": "r009",
+    "question": "How is the estimated delivery date computed?",
+    "expected_source": "delivery_sla.md",
+    "answer_must_contain": "safety buffer of 3 days"
+  },
+  {
+    "id": "r010",
+    "question": "What is the company's target late-delivery rate?",
+    "expected_source": "delivery_sla.md",
+    "answer_must_contain": "below 8%"
+  },
+  {
+    "id": "r011",
+    "question": "When is a delivery considered late?",
+    "expected_source": "delivery_sla.md",
+    "answer_must_contain": "arrives after this date"
+  },
+  {
+    "id": "r012",
+    "question": "Is freight included in the revenue KPI?",
+    "expected_source": "kpi_definitions.md",
+    "answer_must_contain": "Freight value is not included"
+  },
+  {
+    "id": "r013",
+    "question": "How is an active seller defined?",
+    "expected_source": "kpi_definitions.md",
+    "answer_must_contain": "90 days"
+  },
+  {
+    "id": "r014",
+    "question": "How is the late-delivery rate calculated?",
+    "expected_source": "kpi_definitions.md",
+    "answer_must_contain": "divided by all delivered orders"
+  },
+  {
+    "id": "r015",
+    "question": "What does customer satisfaction (CSAT) measure?",
+    "expected_source": "kpi_definitions.md",
+    "answer_must_contain": "average review score"
+  },
+  {
+    "id": "r016",
+    "question": "What counts as a delivered order?",
+    "expected_source": "kpi_definitions.md",
+    "answer_must_contain": "status is delivered"
+  },
+  {
+    "id": "r017",
+    "question": "What caused the delivery delays in November 2017?",
+    "expected_source": "q4_2017_incident_report.md",
+    "answer_must_contain": "Black Friday"
+  },
+  {
+    "id": "r018",
+    "question": "Why did carriers hold parcels during the November 2017 delays?",
+    "expected_source": "q4_2017_incident_report.md",
+    "answer_must_contain": "warehouse capacity"
+  },
+  {
+    "id": "r019",
+    "question": "What new carrier action was taken after the November 2017 incident?",
+    "expected_source": "q4_2017_incident_report.md",
+    "answer_must_contain": "third carrier"
+  },
+  {
+    "id": "r020",
+    "question": "By how many days was the estimated-delivery buffer extended for campaign weeks?",
+    "expected_source": "q4_2017_incident_report.md",
+    "answer_must_contain": "2 days"
+  },
+  {
+    "id": "r021",
+    "question": "When did delivery delays ease after the incident?",
+    "expected_source": "q4_2017_incident_report.md",
+    "answer_must_contain": "December 2017"
+  },
+  {
+    "id": "r022",
+    "question": "Which categories were strongest in Q3 2017?",
+    "expected_source": "q3_2017_business_review.md",
+    "answer_must_contain": "Health and beauty"
+  },
+  {
+    "id": "r023",
+    "question": "What was customer satisfaction in Q3 2017?",
+    "expected_source": "q3_2017_business_review.md",
+    "answer_must_contain": "around 4.0"
+  },
+  {
+    "id": "r024",
+    "question": "What did the team plan ahead of the Q4 campaign season?",
+    "expected_source": "q3_2017_business_review.md",
+    "answer_must_contain": "carrier capacity"
+  },
+  {
+    "id": "r025",
+    "question": "Which payment methods are accepted?",
+    "expected_source": "support_faq.md",
+    "answer_must_contain": "boleto"
+  },
+  {
+    "id": "r026",
+    "question": "Until when can a customer change the delivery address?",
+    "expected_source": "support_faq.md",
+    "answer_must_contain": "before the seller hands"
+  }
+]

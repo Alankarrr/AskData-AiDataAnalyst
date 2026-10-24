@@ -1,0 +1,26 @@
+Question: What is the average review score for each payment type?
+```sql
+SELECT p.payment_type, ROUND(AVG(r.review_score), 2) AS avg_score
+FROM olist_order_payments_dataset p
+JOIN olist_order_reviews_dataset r ON r.order_id = p.order_id
+GROUP BY p.payment_type
+ORDER BY avg_score DESC
+```
+
+Question: Show monthly order counts for the 3 states with the most orders
+```sql
+WITH top_states AS (
+  SELECT c.customer_state
+  FROM olist_orders_dataset o
+  JOIN olist_customers_dataset c ON c.customer_id = o.customer_id
+  GROUP BY c.customer_state
+  ORDER BY COUNT(*) DESC
+  LIMIT 3
+)
+SELECT strftime('%Y-%m', o.order_purchase_timestamp) AS month, c.customer_state, COUNT(*) AS orders
+FROM olist_orders_dataset o
+JOIN olist_customers_dataset c ON c.customer_id = o.customer_id
+WHERE c.customer_state IN (SELECT customer_state FROM top_states)
+GROUP BY month, c.customer_state
+ORDER BY month, c.customer_state
+```
